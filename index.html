@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wow Burger Ethiopia | Premium Digital Menu</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        :root {
+            --primary-red: #D62828;
+            --secondary-gold: #FCBF49;
+            --white: #FFFFFF;
+            --dark-gray: #1A1A1A;
+            --light-gray: #f8f9fa;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--secondary-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1586816001966-79b736744398?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .btn-primary {
+            background: var(--primary-red);
+            color: var(--white);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(214, 40, 40, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: #b52121;
+        }
+
+        /* Menu Section */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-gray);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            width: 60%;
+            height: 4px;
+            background: var(--secondary-gold);
+            position: absolute;
+            bottom: -10px;
+            left: 20%;
+        }
+
+        .category-container {
+            margin-bottom: 60px;
+        }
+
+        .category-name {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--primary-red);
+            padding-left: 15px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* Menu Cards */
+        .menu-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .card-price {
+            color: var(--primary-red);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-ingredients {
+            font-size: 0.75rem;
+            color: #999;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .btn-detail {
+            width: 100%;
+            padding: 10px;
+            background: var(--light-gray);
+            color: var(--dark-gray);
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-detail:hover {
+            background: var(--secondary-gold);
+            color: var(--dark-gray);
+        }
+
+        /* Detail View (Hidden by default) */
+        #detail-view {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            z-index: 2000;
+            overflow-y: auto;
+            padding-top: 20px;
+        }
+
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary-red);
+        }
+
+        .detail-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .detail-img {
+            width: 100%;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .detail-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .detail-price {
+            font-size: 1.8rem;
+            color: var(--primary-red);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .tag {
+            background: var(--light-gray);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .nutrition-item span {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #777;
+        }
+
+        .nutrition-item strong {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 60px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--secondary-gold);
+        }
+
+        .footer-section p, .footer-section div {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-gold);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Responsive Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; } /* Simplified for mobile */
+            .detail-main { grid-template-columns: 1fr; }
+            .nutrition-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero { height: 60vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo" onclick="closeDetails()">WOW <span>BURGER</span></a>
+        <div class="nav-links">
+            <a href="#burgers">Burgers</a>
+            <a href="#drinks">Drinks</a>
+            <a href="#desserts">Desserts</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Main Content wrapper -->
+    <div id="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="animate__animated animate__fadeInDown">The Ultimate <br>Burger Experience</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">Fresh ingredients, premium beef, and unforgettable flavors made for burger lovers in the heart of Addis Ababa.</p>
+            <a href="#burgers" class="btn-primary animate__animated animate__zoomIn animate__delay-2s">Explore Menu</a>
+        </section>
+
+        <!-- Menu Section -->
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Menu</h2>
+            </div>
+
+            <!-- Burgers -->
+            <div id="burgers" class="category-container">
+                <h3 class="category-name">Burgers</h3>
+                <div class="menu-grid" id="burgers-grid">
+                    <!-- JS will inject items here -->
+                </div>
+            </div>
+
+            <!-- Drinks -->
+            <div id="drinks" class="category-container">
+                <h3 class="category-name">Drinks</h3>
+                <div class="menu-grid" id="drinks-grid">
+                    <!-- JS will inject items here -->
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div id="desserts" class="category-container">
+                <h3 class="category-name">Desserts</h3>
+                <div class="menu-grid" id="desserts-grid">
+                    <!-- JS will inject items here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Wow Burger Ethiopia</h3>
+                    <p>Experience the finest gourmet burgers in Ethiopia. Quality you can taste, service you can trust.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Visit Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Bole Road, Addis Ababa, Ethiopia</p>
+                    <p><i class="fas fa-phone"></i> +251 911 123 456</p>
+                    <p><i class="fas fa-envelope"></i> hello@wowburgeret.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Opening Hours</h3>
+                    <p>Monday - Sunday</p>
+                    <p>10:00 AM – 11:00 PM</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Wow Burger Ethiopia. All Rights Reserved.
+            </div>
+        </footer>
+    </div>
+
+    <!-- Product Detail View -->
+    <div id="detail-view">
+        <div class="detail-container">
+            <div class="back-btn" onclick="closeDetails()">
+                <i class="fas fa-arrow-left"></i> Back to Menu
+            </div>
+            <div id="detail-content">
+                <!-- JS will inject detail here -->
+            </div>
+            
+            <div style="margin-top: 60px;">
+                <h3 style="margin-bottom: 20px; text-transform: uppercase;">You might also like</h3>
+                <div class="menu-grid" id="related-items">
+                    <!-- Related items -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Menu Data
+        const menuData = {
+            burgers: [
+                {
+                    id: 1,
+                    name: "Wow Classic Burger",
+                    price: "650 ETB",
+                    desc: "Double beef patty with melted cheddar cheese and our signature house sauce. A timeless favorite.",
+                    ingredients: ["Beef", "Cheese", "Lettuce", "Tomato", "Bun", "Secret Sauce"],
+                    nutrition: { cal: "750", pro: "42g", fat: "35g", carb: "40g" },
+                    img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                },
+                {
+                    id: 2,
+                    name: "BBQ Burger",
+                    price: "720 ETB",
+                    desc: "Smoky BBQ flavor with crispy onions, melted cheese and premium beef patty.",
+                    ingredients: ["Beef", "BBQ Sauce", "Onion Rings", "Cheese", "Pickles"],
+                    nutrition: { cal: "820", pro: "38g", fat: "42g", carb: "55g" },
+                    img: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                },
+                {
+                    id: 3,
+                    name: "Cheese Burger",
+                    price: "600 ETB",
+                    desc: "Classic burger loaded with extra melted cheese and fresh garden vegetables.",
+                    ingredients: ["Beef", "Extra Cheese", "Tomato", "Lettuce", "Onions"],
+                    nutrition: { cal: "650", pro: "30g", fat: "28g", carb: "38g" },
+                    img: "https://images.unsplash.com/photo-1550317138-10000687ad32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                },
+                {
+                    id: 4,
+                    name: "Double Beef Burger",
+                    price: "850 ETB",
+                    desc: "Two juicy beef patties stacked for maximum flavor. For those with a serious appetite.",
+                    ingredients: ["Double Beef", "Cheese", "Lettuce", "Pickles", "Mustard"],
+                    nutrition: { cal: "1100", pro: "65g", fat: "58g", carb: "42g" },
+                    img: "https://images.unsplash.com/photo-1534790563855-6825233fa11b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                }
+            ],
+            drinks: [
+                {
+                    id: 5,
+                    name: "Coca-Cola",
+                    price: "80 ETB",
+                    desc: "Refreshing classic Coca-Cola served ice cold.",
+                    ingredients: ["Cola", "Ice"],
+                    nutrition: { cal: "140", pro: "0g", fat: "0g", carb: "39g" },
+                    img: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                },
+                {
+                    id: 6,
+                    name: "Fresh Orange Juice",
+                    price: "180 ETB",
+                    desc: "100% freshly squeezed Ethiopian oranges.",
+                    ingredients: ["Oranges", "Natural Sugar"],
+                    nutrition: { cal: "110", pro: "2g", fat: "0g", carb: "26g" },
+                    img: "https://images.unsplash.com/photo-1613478223719-2ab802602423?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                },
+                {
+                    id: 7,
+                    name: "Chocolate Milkshake",
+                    price: "250 ETB",
+                    desc: "Rich chocolate blended with premium vanilla ice cream and whipped cream.",
+                    ingredients: ["Milk", "Cocoa", "Ice Cream", "Whipped Cream"],
+                    nutrition: { cal: "550", pro: "12g", fat: "22g", carb: "65g" },
+                    img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                }
+            ],
+            desserts: [
+                {
+                    id: 8,
+                    name: "Chocolate Lava Cake",
+                    price: "320 ETB",
+                    desc: "Warm chocolate cake with a molten center, served with a side of vanilla cream.",
+                    ingredients: ["Dark Chocolate", "Flour", "Eggs", "Butter"],
+                    nutrition: { cal: "450", pro: "6g", fat: "25g", carb: "48g" },
+                    img: "https://images.unsplash.com/photo-1624353339563-0940026e632b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                },
+                {
+                    id: 9,
+                    name: "Brownie Sundae",
+                    price: "350 ETB",
+                    desc: "Fudgy brownies topped with vanilla ice cream and hot chocolate drizzle.",
+                    ingredients: ["Brownie", "Vanilla Ice Cream", "Chocolate Sauce", "Nuts"],
+                    nutrition: { cal: "620", pro: "8g", fat: "32g", carb: "75g" },
+                    img: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                }
+            ]
+        };
+
+        // Function to render cards
+        function renderMenu() {
+            Object.keys(menuData).forEach(category => {
+                const grid = document.getElementById(`${category}-grid`);
+                menuData[category].forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'menu-card animate__animated animate__fadeIn';
+                    card.innerHTML = `
+                        <img src="${item.img}" alt="${item.name}" class="card-img">
+                        <div class="card-content">
+                            <div class="card-header">
+                                <h4 class="card-title">${item.name}</h4>
+                                <span class="card-price">${item.price}</span>
+                            </div>
+                            <p class="card-desc">${item.desc}</p>
+                            <p class="card-ingredients">Ingredients: ${item.ingredients.slice(0,3).join(', ')}...</p>
+                            <button class="btn-detail" onclick="showDetails(${item.id})">View Details</button>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            });
+        }
+
+        // Show Product Details
+        function showDetails(id) {
+            let item = null;
+            // Find item in all categories
+            Object.values(menuData).forEach(cat => {
+                const found = cat.find(i => i.id === id);
+                if(found) item = found;
+            });
+
+            if(!item) return;
+
+            const detailContent = document.getElementById('detail-content');
+            detailContent.innerHTML = `
+                <div class="detail-main animate__animated animate__fadeIn">
+                    <img src="${item.img}" alt="${item.name}" class="detail-img">
+                    <div class="detail-info">
+                        <h1>${item.name}</h1>
+                        <p class="detail-price">${item.price}</p>
+                        <p>${item.desc}</p>
+                        
+                        <h4 style="margin-top:25px;">Ingredients</h4>
+                        <div class="tag-container">
+                            ${item.ingredients.map(ing => `<span class="tag">${ing}</span>`).join('')}
+                        </div>
+
+                        <div class="nutrition-grid">
+                            <div class="nutrition-item"><span>Calories</span><strong>${item.nutrition.cal}</strong></div>
+                            <div class="nutrition-item"><span>Protein</span><strong>${item.nutrition.pro}</strong></div>
+                            <div class="nutrition-item"><span>Fat</span><strong>${item.nutrition.fat}</strong></div>
+                            <div class="nutrition-item"><span>Carbs</span><strong>${item.nutrition.carb}</strong></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Related items (simple logic: same category)
+            const relatedGrid = document.getElementById('related-items');
+            relatedGrid.innerHTML = '';
+            // Just picking 3 items
+            const allItems = [...menuData.burgers, ...menuData.drinks, ...menuData.desserts].filter(i => i.id !== id).slice(0, 3);
+            
+            allItems.forEach(ri => {
+                const card = document.createElement('div');
+                card.className = 'menu-card';
+                card.innerHTML = `
+                    <img src="${ri.img}" alt="${ri.name}" class="card-img">
+                    <div class="card-content">
+                        <h4 class="card-title">${ri.name}</h4>
+                        <button class="btn-detail" onclick="showDetails(${ri.id})">View</button>
+                    </div>
+                `;
+                relatedGrid.appendChild(card);
+            });
+
+            document.getElementById('detail-view').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scroll on background
+            window.scrollTo(0, 0);
+        }
+
+        function closeDetails() {
+            document.getElementById('detail-view').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', renderMenu);
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
